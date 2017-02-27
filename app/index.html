@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vimeo Staff Picks</title>
+    <link rel="stylesheet" href="styles/css/foundation.css">
+    <link rel="stylesheet" href="styles/css/styles.css">
+    <link rel="icon" href="images/vimeo.png" type="image/x-icon" />
+    <script src="https://use.fontawesome.com/7f397a14f2.js"></script>
+  </head>
+  <body>
+
+    <div class="row collapse">
+      <div class="ribbon"></div>
+      <div class="banner large-12 columns">
+        <img class="banner__icon" src="http://fontmeme.com/permalink/170227/502d98327c6b237291304c16c018986c.png">
+      </div>
+    </div>
+
+    <div id="app">
+
+      <div class="row" v-if="showVid === 'error'">
+        <div class="large-12 columns">
+          <span> Sorry, we're having a problem loading staff picks right now. Try again later!</span>
+        </div>
+      </div>
+
+      <div class="row" v-if="showVid === 'true'">
+        <div class="large-12 columns player">
+          <div class="vid-container">
+            <iframe :src="endpoint + selected.id" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" v-bind:class="{ border: showVid === 'true'}">
+        <div v-for="Item in Items">
+          <div class="item-container small-12 medium-6 large-6 columns" v-on:click="show(Item)">
+            <div class="img-container">
+              <img class="img-container__thumbnail":src="Item.thumbnail_large">
+              <div class="img-overlay">
+                <span class="img-overlay__title">{{ Item.title }}</span>
+                <span class="img-overlay__author"> by {{ Item.user_name }} </span>
+                <div class="img-overlay__stats" v-if="Item.stats_number_of_plays">
+                  <span> {{Item.stats_number_of_plays}} <i class="fa fa-play" aria-hidden="true"></i></span>
+                  <span> {{Item.stats_number_of_likes}} <i class="fa fa-heart" aria-hidden="true"></i></span>
+                  <span> {{Item.stats_number_of_comments}} <i class="fa fa-comment" aria-hidden="true"></i></span>
+                </div>
+                <div class="play">
+                  <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="scripts/js/vendor/jquery.js"></script>
+    <script src="scripts/js/vendor/what-input.js"></script>
+    <script src="scripts/js/vendor/foundation.js"></script>
+    <script src="scripts/js/app.js"></script>
+  </body>
+</html>

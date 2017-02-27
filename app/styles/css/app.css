@@ -1,0 +1,9 @@
+body {
+  padding: 50px;
+}
+img {
+  width: 570px;
+  height: 320px;
+  display: inline-block;
+  position: relative;
+}
