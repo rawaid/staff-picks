@@ -56,22 +56,33 @@
   &__title {
     font-weight: bold;
     font-size: 20px;
+    @media screen and (min-width: 64em) {
+      font-size: 18px;
+    }
   }
 
   &__author {
     font-size: 18px;
+    @media screen and (min-width: 64em) {
+      font-size: 16px;
+    }
+
   }
 
   &__stats {
     display: inline-block;
-    font-size: 14px;
+    font-size: 12px;
+    @media screen and (min-width: 64em) {
+      font-size: 14px;
+    }
   }
 }
 
-.play {
+.play-icon {
   font-size: 100px;
   text-align: center;
-  @media screen and (max-width: 39.9375em) {
+  position: relative;
+  @media screen and (max-width: 63.9375em) {
     display: none;
   }
 }
